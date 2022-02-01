@@ -1,0 +1,72 @@
+<section class="content" class="contenido">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Lista de Registros</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div style="text-align:end;">
+                <button style="background-color:#218838; color: white; margin: 10px;" class="btn" routerLink="/dashboard/newregister">Nuevo Registro</button>
+              </div>
+              <div></div>
+              <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                
+                <div class="row">
+                 
+                  <div class="col-sm-12 col-md-6">
+                    <input type="date" name="" id="date" value={{fullday}}  (change)='getRegisters()' > 
+                     </div>
+                     
+                     <div class="col-sm-12 col-md-6">
+                    
+                       <div id="example1_filter" class="dataTables_filter">
+                    <label>Search:<input type="search" class="form-control form-control-sm" placeholder=""  [(ngModel)]="filtername" name="filtername"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
+                <thead>
+                <tr role="row">
+                  <th tabindex="0"  rowspan="1" colspan="1"  >Conductor</th>
+                  <th tabindex="0"  rowspan="1" colspan="1"  >Placa</th>
+                  <th  tabindex="0"  rowspan="1" colspan="1" >Ingreso</th>
+                  <th  tabindex="0"  rowspan="1" colspan="1" >Observacion</th>
+                  <th  tabindex="0"  rowspan="1" colspan="1" >Salida</th>
+                  <th  tabindex="0"  rowspan="1" colspan="1" >Observacion</th>
+                  <th  tabindex="0"  rowspan="1" colspan="1" >Ver detalle</th>
+                  </thead>
+                <tbody>       
+                
+                
+                <tr class="odd" *ngFor="let register of registers | filterregister:filtername">
+                  <td>{{register.person.name}} {{register.person.lastname}}</td>
+                  <td>{{register.registrationplate}} </td>
+                  <td style="font-weight: bold; color: rgb(20, 168, 52);">{{register.checkin}}</td>
+                  <td >{{register.obs_checkin}}</td>
+                  <td style="font-weight: bold; color: rgb(190, 52, 17);">{{register.checkout}}</td>
+                  <td >{{register.obs_checkout}}</td> 
+                  <td >
+                    <a routerLink="/dashboard/verregister/{{register.id}}" style="padding-right: 20px; color:blueviolet; font-size: 15px;"><i class="fas fa-eye"></i></a>
+                    
+                  </td>
+                 
+                </tr>
+                  </tbody>
+               
+              </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button page-item previous" id="example1_previous"><a href="#"  data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item "><a href="#"  data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item active"><a href="#"  data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#"  data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#"  data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#"  data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#"  data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example1_next"><a href="#"  data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
