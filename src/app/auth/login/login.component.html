@@ -15,26 +15,13 @@
     </div>
     <div class="input email">
       <input type="password" value=""  [(ngModel)]="password" name="password"  placeholder=" "  required>
-      <label>Contraseña</label>
+      <label>Contraseña</label> 
   </div>
-  <!-- <div class="checkboxT">
-    <input type="checkbox" formControlName="remember">
-    <label class="checkbox">Recuerdame</label>
-</div> -->
-   
+    
     <button type="submit" [disabled]="!f.valid"  class="btn btn-outline-success btn-block">
           <span>Ingresar</span>
     </button>
-    <!-- <div >
-      <label class="etiqueta2">
-          <a routerLink="/register">¿Olvidaste tu contraseña?</a> </label>
-    </div>
-
-    <div >
-      <label class="etiqueta">Si no tienes una cuenta puedes registrarte
-          <a routerLink="/register">aquí</a> </label>
-    </div> -->
-
+ 
 </form>
 
 </body>

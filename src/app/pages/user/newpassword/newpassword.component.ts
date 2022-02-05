@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Person } from '../../../models/person';
-import { PersonService } from '../../../services/person.service';
-import { Observable } from 'rxjs';
-import { CarService } from 'src/app/services/car.service';
+import { Password } from 'src/app/models/password';
+import { Users } from 'src/app/models/users';
 import { UserService } from 'src/app/services/user.service';
-import { Users } from '../../../models/users';
-import { User } from 'src/app/models/user';
-import { Edituser } from 'src/app/models/edituser';
 
 @Component({
-  selector: 'app-edituser',
-  templateUrl: './edituser.component.html',
-  styleUrls: ['./edituser.component.css']
+  selector: 'app-newpassword',
+  templateUrl: './newpassword.component.html',
+  styleUrls: ['./newpassword.component.css']
 })
-export class EdituserComponent implements OnInit {
+export class NewpasswordComponent implements OnInit {
+  
   users: Users=null;
-  edituser: Edituser=null;
+  newpassword: Password=null;
    name?="";
   username="";
   password="";
@@ -51,14 +47,14 @@ export class EdituserComponent implements OnInit {
 
   onUpdate(){
      
-    const edituser = new Edituser(
-      this.users.name,
-      this.users.username    );
-      console.log(edituser);
-      this.userService.updateUser(edituser).subscribe(
+    const newpassword = new Password(
+      this.users.username,
+      this.users.password    );
+      console.log(newpassword);
+      this.userService.ChangePassword(newpassword).subscribe(
         data=>{
           console.log(data);
-          this.toastr.success('Usuario Actualizado','OK',{
+          this.toastr.success('La contraseña se cambio con exito','OK',{
             timeOut:3000
           });
           this.router.navigate(['/dashboard/users']);

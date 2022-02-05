@@ -23,6 +23,9 @@ import { EdituserComponent } from './user/edituser/edituser.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { LoginComponent } from '../auth/login/login.component';
 import { AddtocarComponent } from './persons/addtocar/addtocar.component';
+import { NewpasswordComponent } from './user/newpassword/newpassword.component';
+import { NewrolComponent } from './user/newrol/newrol.component';
+
 
 
 const routes: Routes = [
@@ -36,6 +39,8 @@ const routes: Routes = [
    {path: 'users',component:UserComponent},
    {path: 'newuser',component:NewuserComponent},
    {path: 'edituser/:username',component:EdituserComponent},
+   {path: 'newpassword/:username',component:NewpasswordComponent},
+   {path: 'newrol/:username',component:NewrolComponent},
   {path: 'register',component:RegisterComponent},
   {path: 'newregister',component:NewregisterComponent},
   {path: 'edit/:id',component:EditpersonComponent},

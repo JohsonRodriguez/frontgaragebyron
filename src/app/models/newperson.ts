@@ -5,10 +5,6 @@ export class Newperson {
     phone: string;
     type: string;
    
-    
-    
-    
-
     constructor(dni:string, name: string, lastname: string,phone: string,type: string ) {
         this.dni = dni;
         this.name = name;

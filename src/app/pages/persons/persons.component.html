@@ -31,15 +31,13 @@
                 <tbody>       
                 
                 
-                <tr class="odd" *ngFor="let person of persons | filterperson:filtername">
+                <tr class="odd" *ngFor="let person of persons | filterperson:filtername; let i=index">
                   <td >{{person.dni}}</td>
                   <td>{{person.name}} {{person.lastname}}</td>
                   <td>{{person.type}}</td>
                   <td >{{person.phone}}</td>
                   <td > 
-                    <p class="active" [class.redClass]="person.enabled =='true'">{{person.enabled}}</p>
-                    
-                    <button class="btn " routerLink="/dashboard/newperson">{{person.enabled}}</button>
+                     <button class="btn active " [class.redClass]="person.enabled !=true" (click)="cambiarEstado(i)">{{person.enabled | estado}}</button>
                   </td>
                   <td>
                   <div *ngFor="let datos of person.cars" >
@@ -49,7 +47,7 @@
                  
                   
                   <td >
-                    <a routerLink="/dashboard/edit/{{person.dni}}" style="padding-right: 20px; color:orange; font-size: 15px;"><i class="fas fa-pencil-alt"></i></a>
+                    <a routerLink="/dashboard/edit/{{person.dni}}" title="Editar conductor" style="padding-right: 20px; color:orange; font-size: 15px;"><i class="fas fa-pencil-alt"></i></a>
                     
                   </td>
                 </tr>

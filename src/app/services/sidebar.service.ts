@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
+  
+  public currentUser  = localStorage.getItem('rol');
+  //public currentUser  = 'ROLE_ADMIN';
  //creación de menus por nfor    
   menu: any[] = [{
 
@@ -40,4 +43,5 @@ export class SidebarService {
   
 
   constructor() { }
+  
 }

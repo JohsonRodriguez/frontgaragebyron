@@ -16,6 +16,9 @@ import { Car } from 'src/app/models/car';
   styleUrls: ['./newregister.component.css']
 })
 export class NewregisterComponent implements OnInit {
+  isButtonVisible = false;
+   isButtonVisible2 = false;
+   isButtonVisible3 = false;
   dni="";
   name="";
   lastname="";
@@ -26,6 +29,7 @@ export class NewregisterComponent implements OnInit {
   obs="";
   placa=""
   user ="Jhonson";
+  estado=true;
   registers: Register[] = [];
   persons: Person[]=[];
   data: any = {}
@@ -131,6 +135,15 @@ searchbyDni(){
         this.name=this.person.name;
         this.lastname=this.person.lastname;
         this.cars=this.person.cars;
+        this.estado=this.person.enabled;
+        if(this.estado==false){
+          this.isButtonVisible = false;
+          this.isButtonVisible3 = true;
+        }else{
+          this.isButtonVisible = true;
+          this.isButtonVisible3 = false;
+        }
+        
       },
       err =>{
         this.toastr.error(err.error.exception,'Error',{

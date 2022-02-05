@@ -28,6 +28,9 @@ import { UserComponent } from './user/user.component';
 import { EdituserComponent } from './user/edituser/edituser.component';
 import { FilteruserPipe } from '../pipes/filteruser.pipe';
 import { AddtocarComponent } from './persons/addtocar/addtocar.component';
+import { EstadoPipe } from '../pipes/estado.pipe';
+import { NewpasswordComponent } from './user/newpassword/newpassword.component';
+import { NewrolComponent } from './user/newrol/newrol.component';
 
 
 
@@ -62,7 +65,9 @@ import { AddtocarComponent } from './persons/addtocar/addtocar.component';
     UserComponent,
     EdituserComponent,
     AddtocarComponent,
-    
+    EstadoPipe,
+    NewpasswordComponent,
+    NewrolComponent,
     
     
   ],

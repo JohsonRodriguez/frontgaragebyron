@@ -1,46 +1,73 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Addrol } from '../models/addrol';
+import { Edituser } from '../models/edituser';
+import { Password } from '../models/password';
 import { Users } from '../models/users';
+import { SessionService } from './session.service';
+import { Rol } from '../models/rol';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public currentUser = null;
-  movilidadURL = "http://127.0.0.1:8081/api/"
-  constructor(private httpClient: HttpClient) { 
+  
+  movilidadURL = "https://lordbyron-dev.azure-api.net/users-service/api/"
+  constructor(private httpClient: HttpClient,private sessionService: SessionService){ 
+    
      
-    //this.currentUser = "ROLE_USER";
-    //this.currentUser="ROLE_ADMIN";
-     this.currentUser = localStorage.getItem('rol');
+  }
+  private getOptions(): any {
+    return {
+      headers: {
+        'Authorization': `Bearer ${this.sessionService.getSessionToken()}`,
+        'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e'
+      }
+    };
   }
 
-  public lista(): Observable<Users[]> {
-    return this.httpClient.get<Users[]>(this.movilidadURL + "users/list");
+  public lista(): Observable<any> {
+    return this.httpClient.get<Users[]>(this.movilidadURL + "users/list",this.getOptions());
   }
 
    public addUser(user:any):Observable<any>{
-    return this.httpClient.post<any>(this.movilidadURL+"users",user);
+    return this.httpClient.post<any>(this.movilidadURL+"users",user,this.getOptions());
   }
 
   public addRol(rol:any):Observable<any>{
-    return this.httpClient.post<Addrol[]>(this.movilidadURL + "roles/add-to-user",rol);
+    return this.httpClient.post<Addrol[]>(this.movilidadURL + "roles/add-to-user",rol,this.getOptions());
   }
-  public searchByUsername(username:String):Observable<Users>{
-    return this.httpClient.get<Users>(this.movilidadURL+ `users/?username=${username}`);
+  public searchByUsername(username:String):Observable<any>{
+    return this.httpClient.get<Users>(this.movilidadURL+ `users/?username=${username}`,this.getOptions());
   }
 
+  public updateUser(edituser:Edituser):Observable<any>{
+    return this.httpClient.put<any>(this.movilidadURL+"users/update",edituser,this.getOptions());
+  }
+
+ public changeState(username:String, estado:Boolean):Observable<any>{
+  const params = new HttpParams()
+  .set('username', username.toString())
+  .set('isEnabled', estado.toString());
+  
+    return this.httpClient.put<any>(this.movilidadURL+'users/status',params,this.getOptions());
+  }
+
+  public ChangePassword(password:Password):Observable<any>{
+    return this.httpClient.post<Password[]>(this.movilidadURL + "users/change-password",password,this.getOptions());
+  }
+
+  public DeleteRol(rol:Rol):Observable<any>{
+    return this.httpClient.post<Rol[]>(this.movilidadURL + "roles/remove-from-user",rol,this.getOptions());
+  }
+
+  public AddRol(rol:Rol):Observable<any>{
+    return this.httpClient.post<Rol[]>(this.movilidadURL + "roles/add-to-user",rol,this.getOptions());
+  }
   
 
-  // public updatePerson(person:Person):Observable<any>{
-  //   return this.httpClient.put<any>(this.movilidadURL+"update",person);
-  // }
-
-  // public countPerson(): Observable<any> {
-  //   return this.httpClient.get<any>(this.movilidadURL + "count");
-  // }
+  
 
 
 }

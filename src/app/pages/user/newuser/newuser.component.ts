@@ -61,11 +61,7 @@ keyword = 'dni';
         
           this.userService.addUser(user).subscribe(
             data=>{
-              //   this.toastr.success('User Saved','OK',{
-              //   timeOut:3000
-              // });
-              // this.router.navigate(['/dashboard/users']);
-              this.addRol();
+              this. addRol();
             },err=>{
               this.toastr.error(err.error.mensaje,'Fail',{
                 timeOut:3000
@@ -73,6 +69,7 @@ keyword = 'dni';
               this.router.navigate(['/dashboard/newuser']);
             }
           );
+          
     //   },
     //   err =>{
     //     this.toastr.error(err.error.mensaje,'Fail',{
@@ -96,6 +93,8 @@ keyword = 'dni';
    
     this.userService.addRol(rol).subscribe(
       data2=>{
+        console.log(data2);
+        console.log(rol);
         this.toastr.success('User Saved','OK',{
           timeOut:3000
         });

@@ -3,7 +3,7 @@ export class User {
     username: String;
     password: String;
 
-     constructor(name:String, username: string, password: string) {
+     constructor(name:String, username: String, password: String) {
      
         this.name = name;
         this.username = username;

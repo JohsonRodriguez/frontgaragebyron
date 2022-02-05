@@ -15,19 +15,26 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container" *ngIf="this.isButtonVisible">
               <div class="form-group" class="conductor"  >
                 <label for="" ><span> Nombre del conductor :</span> {{name}} {{lastname}}</label>
                 
               </div>
             </div>
-            <div class="row">
+            <div class="container" *ngIf="this.isButtonVisible3">
+              <div class="form-group" class="conductor"  >
+                <label for="" style="color: red;" >
+                  <strong> Conductor Bloqueado no puede ingresar</strong></label>
+                
+              </div>
+            </div>
+            <div class="row" *ngIf="this.isButtonVisible">
                 <!-- ------------------------------------------------ -->
                 <div class="col-md-4 col-lg-4 col-sm-4" *ngFor="let datos of cars">
                         
                   <div class="card2" >
                     
-                    <input [(ngModel)]="data.optcar"  type="radio" name="optcar" id="optcar" value={{datos.registrationplate}} >
+                    <input [(ngModel)]="data.optcar"  type="radio" name="optcar" id="optcar" value={{datos.registrationplate}} (click)="this.isButtonVisible2 = true">
                     <label  class="title">
                         <h6>Placa: {{datos.registrationplate}}</h6>
                         <h6>
@@ -45,7 +52,7 @@
                   
                 </div>
                 <!-- ------------------------------------------------ -->
-                <div class="col-sm-12 col-md-12 mx-auto" >       
+                <div class="col-sm-12 col-md-12 mx-auto" *ngIf="this.isButtonVisible2">       
                   <div class="form-group" style="margin-left: 50px;">
                       <label for="observ">Ingrese observación</label>
                       <textarea type="text"  class="form-control caja" id="observ" name="observ"
@@ -57,7 +64,7 @@
              
   <!-- /.card-body -->
 
-            <div class="col-sm-12 col-md-8 mx-auto" >
+            <div class="col-sm-12 col-md-8 mx-auto" *ngIf="this.isButtonVisible2">
                 <div class="row">
                   <div class="col-sm-12 col-md-4 mx-auto">
                     <button class="btn btn-success btn-block" [disabled]="!f.valid" id="checkin"(click)="onCreate()" >Ingreso</button>

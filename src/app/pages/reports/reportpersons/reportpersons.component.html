@@ -46,7 +46,7 @@
                   <td>{{person.type}}</td>
                   <td >{{person.phone}}</td>
                   <td > 
-                    <p class="active" [class.redClass]="person.state =='DESACTIVO'">{{person.state}}</p>
+                    <button class="btn active " [class.redClass]="person.enabled !=true" >{{person.enabled | estado}}</button>
                   </td>
                  
                   
