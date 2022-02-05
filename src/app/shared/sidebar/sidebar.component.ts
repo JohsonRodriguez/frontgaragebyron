@@ -16,16 +16,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  @Input()name: string ='Usuario';
-  
+   
   public get currentUser() {
-    return this.sidebarService.currentUser;
+    // return this.sidebarService.currentUser;
+    return this.credentials.rol;
   }
   
   // name = localStorage.getItem('username');
 token="";
 username="";
-// name:String="";
+
 rol:String="";
 users: Users=null;
 roles:any[];
@@ -37,7 +37,8 @@ roles:any[];
     private toastr: ToastrService,
     private userService: UserService,
     private cookies: CookieService,
-    public auth:AuthService) { 
+    public auth:AuthService,
+    public credentials:CredentialsService) { 
     this.menuItems=sidebarService.menu;
     this.menuItemsx=sidebarService.menux;
    
@@ -49,14 +50,14 @@ roles:any[];
   ngOnInit(): void {
     
     
-     
+    
 
 
   }
   
   logout(): void {
     this.username="";
-    this.name="";
+    // this.name="";
     this.rol="";
     
     localStorage.removeItem('username');

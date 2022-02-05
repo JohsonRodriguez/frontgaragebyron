@@ -10,6 +10,7 @@ import { SessionService } from 'src/app/services/session.service';
 import { UserService } from 'src/app/services/user.service';
 import { Users } from 'src/app/models/users';
 import {CookieService} from 'ngx-cookie-service';
+import { CredentialsService } from 'src/app/services/credentials.service';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,7 @@ users: Users=null;
     private toastr: ToastrService,
     private sessionService: SessionService,
     private userService: UserService,
-    private cookies: CookieService
+    private credentialsService: CredentialsService
     ) { }
    
  
@@ -75,7 +76,9 @@ users: Users=null;
         this.name=this.users["name"];
         this.roles=this.users["roles"];
         this.rol=this.roles[0].name;
-        
+        this.credentialsService.name=this.name;
+        this.credentialsService.rol=this.rol;
+
         localStorage.setItem('username', JSON.stringify(this.name).replace(/['"]+/g, ''));
         localStorage.setItem('rol', JSON.stringify(this.rol).replace(/['"]+/g, ''));
       },

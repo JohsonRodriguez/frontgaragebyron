@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-
+import { CredentialsService } from 'src/app/services/credentials.service';
 @Injectable({
   providedIn: 'root'
+  
 })
 export class SidebarService {
   
-  public currentUser  = localStorage.getItem('rol');
-  //public currentUser  = 'ROLE_ADMIN';
+  // public currentUser  = localStorage.getItem('rol');
+  // public currentUser  = credentialsService.rol;
  //creación de menus por nfor    
   menu: any[] = [{
 
@@ -14,7 +15,7 @@ export class SidebarService {
       { titulo: 'Inicio', url: 'dashboard',icono:'nav-icon fas fa-tachometer-alt',user:'ROLE_USER' },
       { titulo: 'Usuarios', url: 'users',icono:'nav-icon fas fa-user-circle', user:'ROLE_ADMIN'},
       { titulo: 'Conductores', url: 'persons',icono:'nav-icon fas fa-user-friends', user:'ROLE_ADMIN'},
-      { titulo: 'Autos', url: 'cars',icono:'nav-icon fas fa-car',rol:"ADMINISTRADOR", user:'ROLE_ADMIN'},
+      { titulo: 'Autos', url: 'cars',icono:'nav-icon fas fa-car', user:'ROLE_ADMIN'},
       { titulo: 'Asignar Vehiculo', url: 'addtocar',icono:'nav-icon fas fa-id-card-alt', user:'ROLE_ADMIN'},
       { titulo: 'Registros', url: 'register',icono:'fas fa-calendar-alt nav-icon' ,user:'ROLE_USER'},
       
@@ -42,6 +43,8 @@ export class SidebarService {
 
   
 
-  constructor() { }
+  constructor(
+    
+  ) { }
   
 }
