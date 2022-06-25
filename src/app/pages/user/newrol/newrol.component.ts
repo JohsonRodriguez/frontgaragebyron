@@ -17,6 +17,7 @@ export class NewrolComponent implements OnInit {
   addrol: Rol=null;
   removerol: Rol=null;
    name?="";
+   nombre="";
   username="";
   password="";
     newrol="";
@@ -36,6 +37,7 @@ export class NewrolComponent implements OnInit {
     this.userService.searchByUsername(username).subscribe(
       data=>{
         this.users=data;
+        console.log(this.users.roles[0].rolNombre);
       },
       err =>{
         this.toastr.error(err.error.mensaje,'Fail',{
@@ -56,7 +58,7 @@ export class NewrolComponent implements OnInit {
      
     console.log(this.newrol);
        this.removerol = new Rol(
-      this.users.username,
+      this.users.nombreUsuario,
       this.newrol);
       console.log(this.removerol);
       this.namerol= null;
@@ -78,7 +80,7 @@ export class NewrolComponent implements OnInit {
       
      
        this.addrol = new Rol(
-        this.users.username,
+        this.users.nombreUsuario,
         this.namerol);
         console.log( this.addrol);
         this.userService.AddRol( this.addrol).subscribe(

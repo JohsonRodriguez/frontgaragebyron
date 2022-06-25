@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.lista(this.fullday).subscribe(
       data => {
         this.registers = data;
-        
+        console.log(data);
       },
       err => {
         console.log(err);

@@ -1,11 +1,11 @@
 export class Rol {
-    username: String;
-    roleName: String;
+    nombreUsuario: String;
+    rolNombre: String;
 
-     constructor(username: String, roleName: String) {
+     constructor(nombreUsuario: String, rolNombre: String) {
      
-        this.username = username;
-        this.roleName = roleName;
+        this.nombreUsuario = nombreUsuario;
+        this.rolNombre = rolNombre;
         
     }
 }

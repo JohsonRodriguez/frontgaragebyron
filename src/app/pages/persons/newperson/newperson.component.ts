@@ -129,6 +129,7 @@ export class NewpersonComponent implements OnInit {
           this.router.navigate(['/dashboard/persons']);
 
         },err=>{
+          
           this.toastr.error(err.error.exception,'Error al guardar Persona',{
             timeOut:3000
           });

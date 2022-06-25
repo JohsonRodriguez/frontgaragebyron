@@ -48,7 +48,7 @@ export class NewpasswordComponent implements OnInit {
   onUpdate(){
      
     const newpassword = new Password(
-      this.users.username,
+      this.users.nombreUsuario,
       this.users.password    );
       console.log(newpassword);
       this.userService.ChangePassword(newpassword).subscribe(

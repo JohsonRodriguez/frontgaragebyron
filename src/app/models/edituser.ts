@@ -1,12 +1,12 @@
 export class Edituser {
-    name: String;
-    username: String;
+    nombre: String;
+    nombreUsuario: String;
     
 
-     constructor(name:String, username: String) {
+     constructor(nombre:String, nombreUsuario: String) {
      
-        this.name = name;
-        this.username = username;
+        this.nombre = nombre;
+        this.nombreUsuario = nombreUsuario;
         
         
     }

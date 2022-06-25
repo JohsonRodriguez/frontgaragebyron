@@ -1,12 +1,12 @@
 export class User {
-    name: String;
-    username: String;
+    nombre: String;
+    nombreUsuario: String;
     password: String;
 
-     constructor(name:String, username: String, password: String) {
+     constructor(nombre:String, nombreUsuario: String, password: String) {
      
-        this.name = name;
-        this.username = username;
+        this.nombre = nombre;
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
         
     }

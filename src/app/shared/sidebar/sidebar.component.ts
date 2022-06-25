@@ -9,6 +9,7 @@ import { Users } from 'src/app/models/users';
 import {CookieService} from 'ngx-cookie-service';
 import { CredentialsService } from 'src/app/services/credentials.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,28 +18,29 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SidebarComponent implements OnInit {
    
-  public get currentUser() {
-    // return this.sidebarService.currentUser;
-    return this.credentials.rol;
-  }
+  // public get currentUser() {
+  //   // return this.sidebarService.currentUser;
+  //   return this.credentials.rol;
+  // }
   
   // name = localStorage.getItem('username');
 token="";
 username="";
-
+currentUser="";
 rol:String="";
 users: Users=null;
 roles:any[];
   menuItems?:any[];
   menuItemsx?:any[];
   
-  constructor(private sidebarService:SidebarService,private router:Router, 
+  constructor(public credentials:CredentialsService ,private sidebarService:SidebarService,private router:Router, 
     private sessionService: SessionService,
+    private tokenService: TokenService,
     private toastr: ToastrService,
     private userService: UserService,
     private cookies: CookieService,
     public auth:AuthService,
-    public credentials:CredentialsService) { 
+    ) { 
     this.menuItems=sidebarService.menu;
     this.menuItemsx=sidebarService.menux;
    
@@ -48,8 +50,8 @@ roles:any[];
  
 
   ngOnInit(): void {
-    
-    
+     this.currentUser=sessionStorage.getItem('AuthAuthorities'),
+    this.username=this.tokenService.getNombre();
     
 
 
@@ -72,28 +74,28 @@ roles:any[];
   
   getuser(){
     
-    // var token = this.sessionService.getSessionToken();
-    // var decoded =jwt_decode(token);
-    // this.username = decoded["user_name"];
+//     var token = this.sessionService.getSessionToken();
+//     var decoded =jwt_decode(token);
+//     this.username = decoded["user_name"];
  
-    // this.userService.searchByUsername(this.username).subscribe(
-    //   data=>{
-    //     this.users=data;
-    //     this.name=this.users["name"];
-    //     this.roles=this.users["roles"];
-    //     this.rol=this.roles[0].name;
-    //     localStorage.setItem('username', JSON.stringify(this.name).replace(/['"]+/g, ''));
-    //     localStorage.setItem('rol', JSON.stringify(this.rol).replace(/['"]+/g, ''));
-    //   },
-    //   err =>{
-    //     this.toastr.error(err.error.mensaje,'Fail',{
-    //       timeOut:3000
-    //     });
+//     this.userService.searchByUsername(this.username).subscribe(
+//       data=>{
+//         this.users=data;
+//         this.name=this.users["name"];
+//         this.roles=this.users["roles"];
+//         this.rol=this.roles[0].name;
+//         localStorage.setItem('username', JSON.stringify(this.name).replace(/['"]+/g, ''));
+//         localStorage.setItem('rol', JSON.stringify(this.rol).replace(/['"]+/g, ''));
+//       },
+//       err =>{
+//         this.toastr.error(err.error.mensaje,'Fail',{
+//           timeOut:3000
+//         });
                 
-    //   }
-    // );
+//       }
+//     );
     
- }
+}
 
 
 

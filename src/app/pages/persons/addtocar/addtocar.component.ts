@@ -68,7 +68,7 @@ export class AddtocarComponent implements OnInit {
                     
           });
           console.log(err.error.exception);
-          this.router.navigate(['/dashboard/newregister']);
+          this.router.navigate(['/dashboard/addtocar']);
           
          }
       );

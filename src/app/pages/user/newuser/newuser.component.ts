@@ -18,10 +18,10 @@ import { Addrol } from 'src/app/models/addrol';
   providers:[PersonService]
 })
 export class NewuserComponent implements OnInit {
-    name="";
-  username="";
+  nombre="";
+    nombreUsuario="";
   password="";
-  roleName="";
+  rolNombre="";
     public dni=""
     person:Person;
     doc="";
@@ -54,8 +54,8 @@ keyword = 'dni';
     //   data2=>{
     //     this.person=data2;
         const user = new User(
-          this.name,
-          this.username,
+          this.nombre,
+          this.nombreUsuario,
           this.password         
           );
         
@@ -87,8 +87,8 @@ keyword = 'dni';
   
   addRol(){
     const rol = new Addrol(
-      this.username,
-      this.roleName         
+      this.nombreUsuario,
+      this.rolNombre         
       );
    
     this.userService.addRol(rol).subscribe(

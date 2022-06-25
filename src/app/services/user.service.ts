@@ -13,7 +13,8 @@ import { Rol } from '../models/rol';
 })
 export class UserService {
   
-  movilidadURL = "https://lordbyron-dev.azure-api.net/users-service/api/"
+  // movilidadURL = "https://lordbyron-dev.azure-api.net/users-service/api/"
+  movilidadURL = "https://applordbyron.com:8443/auth/"
   constructor(private httpClient: HttpClient,private sessionService: SessionService){ 
     
      
@@ -21,8 +22,9 @@ export class UserService {
   private getOptions(): any {
     return {
       headers: {
-        'Authorization': `Bearer ${this.sessionService.getSessionToken()}`,
-        'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e'
+        'Authorization': `Bearer ${this.sessionService.getSessionToken()}`
+        // ,
+        // 'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e'
       }
     };
   }
@@ -38,8 +40,8 @@ export class UserService {
   public addRol(rol:any):Observable<any>{
     return this.httpClient.post<Addrol[]>(this.movilidadURL + "roles/add-to-user",rol,this.getOptions());
   }
-  public searchByUsername(username:String):Observable<any>{
-    return this.httpClient.get<Users>(this.movilidadURL+ `users/?username=${username}`,this.getOptions());
+  public searchByUsername(nombreUsuario:String):Observable<any>{
+    return this.httpClient.get<Users>(this.movilidadURL+ `users?nombreUsuario=${nombreUsuario}`,this.getOptions());
   }
 
   public updateUser(edituser:Edituser):Observable<any>{

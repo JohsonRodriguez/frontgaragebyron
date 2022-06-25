@@ -72,7 +72,7 @@ export class NewregisterComponent implements OnInit {
       this.placa=this.data.optcar
     }
     const checkin = new Checkin(
-      this.user=localStorage.getItem('username'),
+      this.user=sessionStorage.getItem('AuthuName'),
       this.registrationplate=this.placa,
      this.observation=this.obs,
       this.dni=this.dni
@@ -106,7 +106,7 @@ export class NewregisterComponent implements OnInit {
       this.placa=this.data.optcar
     }
     const checkin = new Checkin(
-      this.user=localStorage.getItem('tutorial'),
+      this.user=sessionStorage.getItem('AuthuName'),
       this.registrationplate=this.placa,
      this.observation=this.obs,
       this.dni=this.dni

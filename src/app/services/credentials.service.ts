@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CredentialsService {
+  rol:String = sessionStorage.getItem('AuthAuthorities');
   name:String = localStorage.getItem('username');
-  rol:String = localStorage.getItem('rol');
+  
   constructor() { }
 }

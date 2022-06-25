@@ -1,11 +1,11 @@
 export class Password {
     
-    username: String;
+    nombreUsuario: String;
     newPassword: String;
 
-     constructor(username: String, newPassword: String) {
+     constructor(nombreUsuario: String, newPassword: String) {
      
-        this.username = username;
+        this.nombreUsuario = nombreUsuario;
         this.newPassword = newPassword;
         
     }

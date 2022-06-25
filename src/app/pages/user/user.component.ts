@@ -50,8 +50,8 @@ export class UserComponent implements OnInit {
 
   
   cambiarEstado(i: number){
-    var username = this.users[i].username;
-    var state=this.users[i].enabled;
+    var username = this.users[i].nombreUsuario;
+    var state=this.users[i].state;
     if(state==true){
       var newstate=false;
     }else{

@@ -18,7 +18,7 @@ import { Edituser } from 'src/app/models/edituser';
 export class EdituserComponent implements OnInit {
   users: Users=null;
   edituser: Edituser=null;
-   name?="";
+  nombre?="";
   username="";
   password="";
     
@@ -34,9 +34,11 @@ export class EdituserComponent implements OnInit {
   ngOnInit(){
     
     const username= this.activatedRoute.snapshot.params.username;
+    console.log(username);
     this.userService.searchByUsername(username).subscribe(
       data=>{
         this.users=data;
+        console.log(data);
       },
       err =>{
         this.toastr.error(err.error.mensaje,'Fail',{
@@ -52,8 +54,8 @@ export class EdituserComponent implements OnInit {
   onUpdate(){
      
     const edituser = new Edituser(
-      this.users.name,
-      this.users.username    );
+      this.users.nombre,
+      this.users.nombreUsuario    );
       console.log(edituser);
       this.userService.updateUser(edituser).subscribe(
         data=>{

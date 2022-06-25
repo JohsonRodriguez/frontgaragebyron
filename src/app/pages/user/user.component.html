@@ -32,23 +32,23 @@
                 
                 
                 <tr class="odd" *ngFor="let user of users | filteruser:filter; let i=index">
-                  <td >{{user.name}}</td>
-                  <td>{{user.username}}</td>
+                  <td >{{user.nombre}}</td>
+                  <td>{{user.nombreUsuario}}</td>
                   <td><div *ngFor="let datos of user.roles" >
-                    {{datos.name}}
+                    {{datos.rolNombre}}
                   </div></td>
                   
                   <td > 
                     
-                    <button class="btn active " [class.redClass]="user.enabled !=true" (click)="cambiarEstado(i)">{{user.enabled | estado}}</button>
+                    <button class="btn active " [class.redClass]="user.state !=true" (click)="cambiarEstado(i)">{{user.state | estado}}</button>
                   </td>
                  
                  
                   
                   <td >
-                    <a routerLink="/dashboard/edituser/{{user.username}}"title="Editar usuario" style="padding-right: 20px; color:orange; font-size: 15px;"><i class="fas fa-pencil-alt"></i></a>
-                    <a routerLink="/dashboard/newpassword/{{user.username}}"title="Cambiar contraseña" style="padding-right: 20px; color:rgb(78, 233, 17); font-size: 15px;"><i class="fas fa-redo-alt"></i></a>
-                    <a routerLink="/dashboard/newrol/{{user.username}}"title="Cambiar Rol" style="padding-right: 20px; color:rgb(84, 82, 243); font-size: 15px;"><i class="fas fa-user-tag"></i></a>
+                    <a routerLink="/dashboard/edituser/{{user.nombreUsuario}}"title="Editar usuario" style="padding-right: 20px; color:orange; font-size: 15px;"><i class="fas fa-pencil-alt"></i></a>
+                    <a routerLink="/dashboard/newpassword/{{user.nombreUsuario}}"title="Cambiar contraseña" style="padding-right: 20px; color:rgb(78, 233, 17); font-size: 15px;"><i class="fas fa-redo-alt"></i></a>
+                    <a routerLink="/dashboard/newrol/{{user.nombreUsuario}}"title="Cambiar Rol" style="padding-right: 20px; color:rgb(84, 82, 243); font-size: 15px;"><i class="fas fa-user-tag"></i></a>
                   </td>
                 </tr>
                   </tbody>

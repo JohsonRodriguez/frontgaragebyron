@@ -1,7 +1,7 @@
 export interface Login {
     password: string;
-    username: string;
-    grant_type: string;
-    scope: string;
+    nombreUsuario   : string;
+    // grant_type: string;
+    // scope: string;
  
   }

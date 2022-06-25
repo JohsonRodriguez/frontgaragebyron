@@ -1,17 +1,17 @@
 export class Users{
     id:number;
-    name: string;
-    username: string;
+    nombre: string;
+    nombreUsuario: string;
     password: string;
-    enabled: boolean;
+    state: boolean;
     roles:Array<any>;
 
-    constructor(id:number,name:string, username: string, password: string, enabled: boolean,roles:Array<any>) {
+    constructor(id:number,nombre:string, nombreUsuario: string, password: string, state: boolean,roles:Array<any>) {
         this.id = id;
-        this.name = name;
-        this.username = username;
+        this.nombre = nombre;
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
-        this.enabled = enabled;
+        this.state = state;
         this.roles = roles;
     }
 }

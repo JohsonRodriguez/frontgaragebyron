@@ -9,14 +9,16 @@ import { SessionService } from 'src/app/services/session.service';
   providedIn: 'root'
 })
 export class CarService {
-  movilidadURL = "https://lordbyron-dev.azure-api.net/parking-service/car/"
+  // movilidadURL = "https://lordbyron-dev.azure-api.net/parking-service/car/"
+  movilidadURL = "https://applordbyron.com:8443/car/"
 
   constructor(private httpClient: HttpClient,private sessionService: SessionService) { }
   private getOptions(): any {
     return {
       headers: {
-        'Authorization': `Bearer ${this.sessionService.getSessionToken()}`,
-        'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e'
+        'Authorization': `Bearer ${this.sessionService.getSessionToken()}`
+        // ,
+        // 'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e'
       }
     };
   }

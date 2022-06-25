@@ -10,7 +10,8 @@ import * as _ from 'lodash';
 export class AuthService {
   token: string;
 
-  authURL="https://lordbyron-dev.azure-api.net/oauth-service/oauth/token"
+//  authURL="https://lordbyron-dev.azure-api.net/oauth-service/oauth/token"
+  authURL="https://applordbyron.com:8443/auth/login"
   // authURL="oauth/token"
 
   constructor(private httpClient: HttpClient,private cookies: CookieService) {
@@ -18,30 +19,40 @@ export class AuthService {
    }
   
 
-  private getOptions(): any {
-    return {
-      headers: {
-        'Authorization': 'Basic Zmlyc3QtY2xpZW50OmFzZGYxMjM0',
-        'Content-Type':'application/x-www-form-urlencoded',
-        'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e'
-      }
-    };
+  // private getOptions(): any {
+  //   return {
+  //     headers: {
+  //       'Authorization': 'Basic Zmlyc3QtY2xpZW50OmFzZGYxMjM0',
+  //       'Content-Type':'application/x-www-form-urlencoded',
+  //       'Ocp-Apim-Subscription-Key':'fdedf7de7f014ceea33b36bfedd8075e',
+  //       'Access-Control-Request-Private-Network':'true'
+  //     }
+  //   };
+  // }
+  public login(body:any):Observable<any>{
+    return this.httpClient.post(this.authURL , body);
   }
 
-  public login(username, password):any {
+
+  // public login(body):any {
     
-    const body = new HttpParams()
-      .set('username', username)
-      .set('grant_type',"password")
-      .set('scope', "write")
-      .set('password', password);
-      return this.httpClient.post(this.authURL ,
-      body, this.getOptions()
+    // const body ={
+    //   "nombreUsuario": nombreUsuario,
+    //   "password": password
+    //     }
+    //     console.log(body);
+    //  new HttpParams()
+    //   .set('nombreUsuario', nombreUsuario)
+    //   // .set('grant_type',"password")
+    //   // .set('scope', "write")
+    //   .set('password', password);
+    //   return this.httpClient.post(this.authURL ,
+    //     body
      
-    );
+    // );
     
     
-  }
+  // }
   
 
   setSessionToken(token: string): void {

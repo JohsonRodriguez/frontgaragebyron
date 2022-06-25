@@ -1,11 +1,11 @@
 export class Addrol {
-    "username":string;
-    "roleName":string;
-    constructor( username: string, roleName: string) {
+    "nombreUsuario":string;
+    "rolNombre":string;
+    constructor( nombreUsuario: string, rolNombre: string) {
      
         
-        this.username = username;
-        this.roleName = roleName;
+        this.nombreUsuario = nombreUsuario;
+        this.rolNombre = rolNombre;
         
     }
 }
